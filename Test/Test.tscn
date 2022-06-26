@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/navmesh_aabb_clipper/AABBNode.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 8, 2, 4 )
+
+[sub_resource type="NavigationMesh" id=3]
+vertices = PoolVector3Array( 4.00459, 3.28641, 1.21009, 4.00459, 2.08641, 3.91009, 2.20459, 2.68641, 1.21009, 2.20459, 2.68641, 1.21009, 4.00459, 2.08641, 3.91009, 1.60459, 1.48641, 3.91009, 0.704587, 1.68641, 2.71009, 1.60459, 1.48641, 3.91009, -0.495413, 1.08641, 2.61009, -0.495413, 1.08641, 2.61009, 1.60459, 1.48641, 3.91009, 1.30459, 1.08641, 5.11009, -0.495413, 1.08641, 2.61009, 1.30459, 1.08641, 5.11009, -2.89541, 0.886407, 2.41009, -2.89541, 0.886407, 2.41009, 1.30459, 1.08641, 5.11009, -0.495413, 1.08641, 8.11009, 0.704587, 1.68641, 2.71009, 2.20459, 2.68641, 1.21009, 1.60459, 1.48641, 3.91009, 1.30459, 1.08641, 5.11009, 2.20459, 1.28641, 6.91009, -0.495413, 1.08641, 8.11009 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 7, 8 ), PoolIntArray( 9, 10, 11 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 15, 16, 17 ), PoolIntArray( 18, 19, 20 ), PoolIntArray( 21, 22, 23 ) ]
+geometry/source_geometry_mode = 1
+geometry/source_group_name = "navmesh"
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Navigation" type="Navigation" parent="." groups=["navmesh"]]
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation"]
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Navigation"]
+transform = Transform( 0.976488, -0.215571, 0, 0.196763, 0.891295, -0.408506, 0.0880618, 0.398901, 0.912756, 2.87171, 0, 1.63564 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Navigation"]
+transform = Transform( -0.395432, 0.212243, 0.893637, 0.0997079, 0.977105, -0.187947, -0.913068, 0.0147824, -0.40754, -2.89279, -0.984073, -0.619132 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="Navigation"]
+transform = Transform( -0.407576, -0.0667852, 0.910726, -0.0137549, 0.997658, 0.0670044, -0.913068, 0.0147824, -0.40754, -0.544386, -0.25157, 4.25329 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 3 )
+
+[node name="ClipNode" type="Spatial" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.224734, 2.36877, -0.234871 )
+script = ExtResource( 1 )
+size = Vector3( 4, 3, 4 )
