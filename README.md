@@ -4,4 +4,8 @@ Only removes whole polygons whose points fall inside the AABB, does not clip the
 
 Mainly useful to remove unused floating islands that tend to almost always be generated when baking heightmaps.
 
+Quick How to:
+Add 'AABBNode's as children of a NavMeshInstance and select the NavMeshInstance. Next to the Bake button in the menu-bar a 'Clip' button will appear.
+Clicking it will process any existing baked navmesh, so the order is Bake->Clip
+
 ![alt text](https://github.com/Flavelius/godot-navmesh-eraser/blob/main/Images/removal_preview.jpg?raw=true)
